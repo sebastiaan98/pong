@@ -13,7 +13,7 @@ package utils
 	 * 
 	 * 
 	 */
-	public class Controller extends EventDispatcher
+	public class Controller2 extends EventDispatcher
 	{
 		private var _up:Boolean;
 		private var _down:Boolean;
@@ -23,7 +23,7 @@ package utils
 		private var _fireKeyCode:int;
 		
 		
-		public function Controller(stage:Stage, up:int = Keyboard.UP, down:int = Keyboard.DOWN, fire:int = Keyboard.SPACE) 
+		public function Controller2(stage:Stage, up:int = Keyboard.W, down:int = Keyboard.S, fire:int = Keyboard.X) 
 		{
 			_upKeyCode = up;
 			_downKeyCode = down;

@@ -16,7 +16,10 @@ package actors
 		private var _movement:Point;
 		public static const OUTSIDE_RIGHT:String = "outside right";
 		public static const OUTSIDE_LEFT:String = "outside left";
-		
+		public function set movement(m:Point):void
+		{
+			_movement = m;
+		}
 		public function get xMove():Number
 		{
 			return _movement.x;			
@@ -24,15 +27,6 @@ package actors
 		public function set xMove(move:Number):void
 		{
 			_movement.x = move;
-			
-		}
-		public function get yMove():Number
-		{
-			return _movement.y;			
-		}
-		public function set yMove(move:Number):void
-		{
-			_movement.y = move;
 			
 		}
 		public function Ball() 
@@ -46,7 +40,7 @@ package actors
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			addChild(new BallArt());
-			_movement = new Point(0, 0);
+			movement = new Point(0, 0);
 			this.addEventListener(Event.ENTER_FRAME, loop);
 		}
 		public function reset():void
@@ -61,7 +55,7 @@ package actors
 		
 		private function restart(e:TimerEvent):void 
 		{
-			_movement = MovementCalculator.calculateMovement(15 + Math.random() * 10, Math.random() * 360);
+			_movement = MovementCalculator.calculateMovement(25 + Math.random() * 5, Math.random() * 360);
 			if (_movement.x > 0 && _movement.x < 2) _movement.x += 2;
 			if (_movement.x < 0 && _movement.x > -2) _movement.x -= 2;
 		}
@@ -70,18 +64,20 @@ package actors
 			this.x += _movement.x;
 			this.y += _movement.y;
 			
-			if (this.y < 0 || this.y > stage.stageHeight)
+			if (this.y <= 0 || this.y >= stage.stageHeight)
 			{
 				_movement.y *= -1;
 				
 			}
 			if (this.x > stage.stageWidth)
 			{
-				dispatchEvent(new Event(Ball.OUTSIDE_RIGHT));
+				//dispatchEvent(new Event(Ball.OUTSIDE_RIGHT));
+				_movement.x *= -1;
 			}
 			if (this.x < 0)
 			{
-				dispatchEvent(new Event(Ball.OUTSIDE_LEFT));
+				//dispatchEvent(new Event(Ball.OUTSIDE_LEFT));
+				_movement.x *= -1;
 			}
 		}
 		public function destroy():void

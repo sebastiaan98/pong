@@ -8,15 +8,6 @@ package screens
 	 */
 	public class Screen extends MovieClip
 	{
-		[Embed(source = "../../lib/prism.ttf",
-		fontName = "prism", 
-		mimeType = "application/x-font", 
-		fontWeight="normal", 
-		fontStyle="normal", 		
-		advancedAntiAliasing="true", 
-		embedAsCFF = "false")]		
-		private var prismFont:Class;
-		
 		[Embed(source = "../../lib/starjedi/Starjedi.ttf",
 		fontName = "jedi", 
 		mimeType = "application/x-font", 
@@ -24,7 +15,7 @@ package screens
 		fontStyle="normal", 		
 		advancedAntiAliasing="true", 
 		embedAsCFF = "false")]		
-		private var jediFont:Class;
+		private var JediFont:Class;
 		
 		protected var textFormat:TextFormat;
 		protected var subFormat:TextFormat;
@@ -34,8 +25,8 @@ package screens
 		public function Screen() 
 		{
 			textFormat = new TextFormat();
-			textFormat.font = "prism";
-			textFormat.size = 170;
+			textFormat.font = "jedi";
+			textFormat.size = 60;
 			textFormat.color = 0xffffff;
 			
 			

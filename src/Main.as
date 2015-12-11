@@ -27,9 +27,7 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point			
-			soundPlayer = new SoundPlayer();
-			soundPlayer.initialize(this);
-			
+			soundPlayer = new SoundPlayer(this);
 			buildIntroSreen();	
 		}
 		private function buildIntroSreen():void
